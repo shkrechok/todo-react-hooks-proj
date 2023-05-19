@@ -1,15 +1,11 @@
 import { todoService } from "../services/todo.service.js"
 const { useState, useEffect } = React
-const { useSelector, useDispatch } = ReactRedux
-import { ADD_TODO, REMOVE_TODO, SET_TODOS, UPDATE_TODO } from '../store/store.js'
 import { todoActions } from '../store/todo.actions.js'
 const {useParams, useNavigate } = ReactRouterDOM
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { utilService } from "../services/util.service.js"
 
 export function TodoAddEdit() {
-    const dispatch = useDispatch()
-    const todos = useSelector(storeState => storeState.todos)
     const [todoToEdit, setTodoToEdit] = useState(todoService.getEmptyTodo())
     const navigate = useNavigate()
     const params = useParams()
@@ -22,7 +18,7 @@ export function TodoAddEdit() {
         todoService.getById(params.todoId)
             .then(setTodoToEdit)
             .catch(err => {
-                console.log('Had issued in todo edit:', err);
+                console.log('Had issued in todo edit:', err)
                 navigate('/todo')
                 showErrorMsg('todo not found!')
             })
