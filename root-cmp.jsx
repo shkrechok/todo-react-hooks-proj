@@ -23,6 +23,7 @@ export function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/todo" element={<TodoApp/>}/>
                         <Route path="/todo/edit" element={<TodoAddEdit/>}/>
+                        <Route path="/todo/edit/:todoId" element={<TodoAddEdit/>}/>
                     </Routes>
                     </main>
                 </section>

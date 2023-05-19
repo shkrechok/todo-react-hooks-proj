@@ -1,9 +1,12 @@
+import { utilService } from "../services/util.service.js"
+
 export function TodoPreview({ todo }) {
+    const formatedTime = utilService.getformatTimeAgo(todo.createdAt)
 
     return (
-        <li className="todo-preview">
+        <section  className="todo-preview">
                 <h3>{todo.title}</h3>
-                <p>{todo.createdAt}</p>
-        </li>
+                <p>{formatedTime}</p>
+        </section>
     )
 }

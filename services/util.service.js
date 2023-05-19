@@ -7,7 +7,8 @@ export const utilService = {
     getDayName,
     getMonthName,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    getformatTimeAgo
 }
 
 function makeId(length = 6) {
@@ -71,3 +72,35 @@ function loadFromStorage(key) {
     var val = localStorage.getItem(key)
     return JSON.parse(val)
 }
+
+function getformatTimeAgo(unformattedTime) {
+    const currentTime = Date.now();
+    const timeDiff = currentTime - unformattedTime
+  
+    // Calculate the time differences in seconds, minutes, hours, and days
+    const seconds = Math.floor(timeDiff / 1000)
+    const minutes = Math.floor(timeDiff / (1000 * 60))
+    const hours = Math.floor(timeDiff / (1000 * 60 * 60))
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24))
+    const weeks = Math.floor(days / 7)
+    const months = Math.floor(days / 30)
+    const years = Math.floor(days / 365)
+  
+    if (seconds < 60) {
+      return `${seconds} second${seconds !== 1 ? 's' : ''} ago`
+    } else if (minutes < 60) {
+      return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`
+    } else if (hours < 24) {
+      return `${hours} hour${hours !== 1 ? 's' : ''} ago`
+    } else if (days < 7)
+        return `${days} day${days !== 1 ? 's' : ''} ago`
+    else if (days < 30) {
+        return `${weeks} week${weeks !== 1 ? 's' : ''} ago`
+    } else if (days < 365) {
+        return `${months} month${months !== 1 ? 's' : ''} ago`
+    } else if (days >= 365) {
+        return `${years} year${years !== 1 ? 's' : ''} ago`
+    } else  {
+      return `${days} day${days !== 1 ? 's' : ''} ago`
+    }
+  }

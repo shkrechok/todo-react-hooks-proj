@@ -16,7 +16,7 @@ function loadTodos() {
         )
 }
 
-function removeTodo() {
+function removeTodo(todoId) {
     return todoService.remove(todoId)
         .then(() => {
             store.dispatch({ type: REMOVE_TODO, todoId })
@@ -27,11 +27,13 @@ function removeTodo() {
         })
 }
         
-function saveTodo() {
+function saveTodo(todo) {
     const type = (todo._id) ? UPDATE_TODO : ADD_TODO
+
     return todoService.save(todo)
         .then(savedTodo => {
             store.dispatch({ type, todo: savedTodo })
+            return savedTodo
         }
         )
         .catch(err => {

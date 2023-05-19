@@ -22,6 +22,7 @@ function appReducer(state = initialState, action) {
             return { ...state, todos }
         case ADD_TODO:
             todos = [...state.todos, action.todo]
+            console.log('todos', todos)
             return { ...state, todos }
         case UPDATE_TODO:
             todos = state.todos.map(todo => todo._id === action.todo._id ? action.todo : todo)

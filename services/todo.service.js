@@ -69,6 +69,7 @@ function remove(todoId) {
     return storageService.remove(STORAGE_KEY, todoId)
 }
 function save(todo) {
+    console.log('todo.service', todo)
     if (todo._id) {
         todo.updatedAt = Date.now()
         return storageService.put(STORAGE_KEY, todo)
