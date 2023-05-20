@@ -1,0 +1,30 @@
+.todo-list li.done {
+    text-decoration: line-through;
+    color: var(--gray-color);
+}
+
+.todo-list li input{
+    display: none;
+}
+/* .todo-list li.done label{
+    display: none;
+} */
+
+.todo-list li button, .todo-list li label{
+     height:3rem;
+     width:3rem; 
+     align-self: center;
+     justify-self: center;
+     border: none; 
+     border-radius: 0.5rem;
+     box-shadow: 0 0 5px 0 var(--main-bg-color);
+     background-color: transparent;
+     color: var(--main-color);
+
+}
+
+.todo-list li button:hover, .todo-list li label:hover{
+    box-shadow: 0 0 5px 0 var(--shadow2-color);
+    cursor: pointer;
+}
+

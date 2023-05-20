@@ -13,7 +13,8 @@ const demoTodos = [
         "createdAt": 1528817077286,
         "owner": {
             "_id": "u101",
-            "fullname": "Abi Abambi",
+            "username": "user1",
+            "fullname": "First User",
         },
         "priority": 1,
         "updatedAt": 1528817084351,
@@ -26,7 +27,8 @@ const demoTodos = [
         "createdAt": 1528817084351,
         "owner": {
             "_id": "u102",
-            "fullname": "Bob Bobsky",
+            "username": "user2",
+            "fullname": "Second User",
         },
         "priority": 1,
         "updatedAt": 1528817084351,
@@ -40,7 +42,8 @@ const demoTodos = [
         "createdAt": 1528817084351,
         "owner": {
             "_id": "u102",
-            "fullname": "Bob Bobsky",
+            "username": "user3",
+            "fullname": "Third User",
         },
         "priority": 1,
         "updatedAt": 1528817084351,
@@ -57,9 +60,27 @@ export const todoService = {
 }
 
 
-function query() {
+function query(filterBy = {}) {
     // return axios.get(BASE_URL).then(res => res.data)
-    return storageService.query(STORAGE_KEY)
+    return storageService.query(STORAGE_KEY).then(todos => {
+        // if (!filterBy) return todos
+        todos = todos.filter(todo => todo.owner._id === filterBy.owner._id)
+        if (filterBy.status !== 'all') {
+            todos = todos.filter(todo => todo.status === filterBy.status)
+        }
+        
+        if (filterBy.txt) {
+            return todos.filter(todo => todo.title.includes(filterBy.txt))
+        }
+        
+        
+        return todos
+    }
+    ).catch(err => {
+        console.log('Had issues in todo service:', err)
+        throw err
+    }
+    )
 }
 function getById(todoId) {
     return storageService.get(STORAGE_KEY, todoId)
@@ -82,12 +103,14 @@ function save(todo) {
 }
 
 function getEmptyTodo() {
+    let user = userService.getLoggedInUser()
+    user.username = userService.getById(user._id).username
     return { 
         title: '',
         description: '',
         status: 'active',
         createdAt: undefined,
-        owner: undefined/* userService.getLoggedinUser()*/,
+        owner: {...user},
         priority: 1,
         updatedAt: undefined,
     }

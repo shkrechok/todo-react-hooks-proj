@@ -1,3 +1,16 @@
 :root {
     --main-bg-color: lightblue;
+    --second-bg-color: rgb(236, 229, 232);
+    --main-color: darkblue;
+    --shadow1-color: rgba(0, 0, 0, 0.2);
+    --shadow2-color: rgb(235, 213, 49);
+    --gray-color: #ccc;
+    --red-color: #c35050;
+
+
+    --l: 980px;
+    --m: 820px;
+	--s: 600px;
+    --layout-padding: 1rem;
+    --main-content-width: var(--l);
 }

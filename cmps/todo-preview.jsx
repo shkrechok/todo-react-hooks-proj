@@ -6,7 +6,7 @@ export function TodoPreview({ todo }) {
     return (
         <section  className="todo-preview">
                 <h3>{todo.title}</h3>
-                <p>{formatedTime}</p>
+                <p>created {formatedTime}</p>
         </section>
     )
 }

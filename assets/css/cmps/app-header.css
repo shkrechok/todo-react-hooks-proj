@@ -1,12 +1,11 @@
-header {
+.main-header {
     background: lightcyan;
-    border-bottom: 2px solid white;
-}
-
-.app-header {
+    height: 5rem;
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
+    color: var(--main-color);
+    font-size: 1.5rem;
 }
 
 nav a {

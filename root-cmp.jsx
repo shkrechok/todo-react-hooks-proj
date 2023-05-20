@@ -8,6 +8,8 @@ import { About } from "./views/about.jsx"
 import { Home } from "./views/home.jsx"
 import { TodoApp } from "./views/todo-app.jsx"
 import { TodoAddEdit } from "./views/todo-edit.jsx"
+import { UserMsg } from "./cmps/user-msg.jsx"
+import { AppFooter } from "./cmps/app-footer.jsx"
 
 
 
@@ -17,7 +19,7 @@ export function App() {
             <Router>
                 <section className="app">
                     <AppHeader />
-                    <main>
+                    <main className="flex">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
@@ -26,6 +28,8 @@ export function App() {
                         <Route path="/todo/edit/:todoId" element={<TodoAddEdit/>}/>
                     </Routes>
                     </main>
+                    <UserMsg />
+                    <AppFooter />
                 </section>
             </Router>
         </Provider>)

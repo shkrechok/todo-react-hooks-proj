@@ -1,0 +1,33 @@
+.todo-app {
+    color: var(--main-color);
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.todo-header {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    gap:3rem;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+}
+
+.todo-filter {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    gap:3rem;
+    align-items: center;
+    background: #fff;
+    /* border-radius: 0 0 5px 5px; */
+}
+
+.todo-filter  *{
+    color: var(--main-color);
+}
+   
+
