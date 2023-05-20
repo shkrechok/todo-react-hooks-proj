@@ -8,6 +8,12 @@
     font-size: 1.5rem;
 }
 
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 nav a {
     margin: .5em;
 }

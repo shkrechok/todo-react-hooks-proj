@@ -1,3 +1,46 @@
+.todo-list li button, .todo-list li label{
+    height:3rem;
+    width:3rem; 
+    align-self: center;
+    justify-self: center;
+    border: none; 
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px 0 var(--main-bg-color);
+    background-color: transparent;
+    color: var(--main-color);
+
+}
+
+.todo-list li .todo-preview{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.todo-preview h3{
+    padding-inline-start: 1em ;
+    }
+
+.todo-preview h3:hover{
+    cursor: pointer;
+}
+
+.todo-preview p{
+    padding-inline-end: 1em ;
+    }
+
+    .todo-actions {
+    display: flex;
+    align-items: bottom;
+    gap: 1em;
+    }
+
+.todo-list li label{
+   padding: 2px;
+}
+
+
+
 .todo-list li.done {
     text-decoration: line-through;
     color: var(--gray-color);
@@ -6,22 +49,12 @@
 .todo-list li input{
     display: none;
 }
-/* .todo-list li.done label{
-    display: none;
-} */
 
-.todo-list li button, .todo-list li label{
-     height:3rem;
-     width:3rem; 
-     align-self: center;
-     justify-self: center;
-     border: none; 
-     border-radius: 0.5rem;
-     box-shadow: 0 0 5px 0 var(--main-bg-color);
-     background-color: transparent;
-     color: var(--main-color);
-
+.todo-list li.done label, .todo-list li.done button{
+    color: var(--gray-color);
+    box-shadow: 0 0 5px 0 var(--gray-color);
 }
+    
 
 .todo-list li button:hover, .todo-list li label:hover{
     box-shadow: 0 0 5px 0 var(--shadow2-color);

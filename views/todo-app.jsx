@@ -75,7 +75,7 @@ export function TodoApp() {
             <section className="main-page">
                 <section className="todo-app flex column">
                     <header className="todo-header flex align-center space-between">
-                        <h1>Todo App</h1>
+                        <h1>Your todos</h1>
                         <Link to="/todo/edit">Add Todo</Link>
                     </header>
                     <div>No todos to show</div>
@@ -89,7 +89,7 @@ export function TodoApp() {
         <section className="main-page">
             <section className="todo-app flex column">
                 <header className="todo-header flex align-center space-between">
-                <h1>Todo App</h1>
+                <h1>Your todos</h1>
                 <Link to="/todo/edit">Add Todo</Link>
                 </header>
                 <TodoList todos={todos} onDeleteTodo={onDeleteTodo} onToggleTodoStatus={onToggleTodoStatus} />

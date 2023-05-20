@@ -15,13 +15,13 @@ export function AppHeader() {
     }
     return <header className="main-header full">
         <Link to="/">
-            <h3>LOGO!</h3>
+            <h3>Let`s Do!</h3>
         </Link>
-        <nav>
         {user && <section className="user-info">
                 <p>{user.fullname} </p>
                 <button onClick={onLogout}>Logout</button>
             </section>}
+        <nav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/todo">Todo</NavLink>

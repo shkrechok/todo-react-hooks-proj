@@ -65,7 +65,7 @@ export function TodoAddEdit() {
     if (viewType === 'details') return (
         
         <section className={`todo-details ${todoToEdit.status}`}>
-        <h1>Todo details</h1>
+        <h1>Details</h1>
         <form onSubmit={onEdit}>
           <label htmlFor="title">Title</label>
           <p>{todoToEdit.title}</p>
@@ -88,7 +88,7 @@ export function TodoAddEdit() {
     
     
     return <section className={`todo-add-edit ${todoToEdit.status}`}>
-        <h1>Todo Add Edit</h1>
+        <h1>Editor</h1>
         <form onSubmit={onSaveTodo}>
             <label htmlFor="title" >Title</label>
             <input type="text" id="title" name="title" value={todoToEdit.title} onChange={handleTodoChange} />
