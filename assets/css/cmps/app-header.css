@@ -1,5 +1,5 @@
 .main-header {
-    background: lightcyan;
+    background: var(--main-bg-color);
     height: 5rem;
     display: flex;
     justify-content: space-between;
