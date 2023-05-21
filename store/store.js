@@ -6,6 +6,7 @@ export const ADD_TODO = 'ADD_TODO'
 export const UPDATE_TODO = 'UPDATE_TODO'
 export const SET_FILTER = 'SET_FILTER'
 export const SET_USER = 'SET_USER'
+export const SET_USER_PREFS = 'SET_USER_PREFS'
 
 
 const { createStore } = Redux
@@ -45,10 +46,14 @@ function appReducer(state = initialState, action) {
 
         // User
         case SET_USER:
+            // if i don`t include filter here, then on login the new user sees for a second the previous user`s todos
             return { ...state, loggedInUser: action.user, filterBy: {
                 ...state.filterBy,
                 owner: action.user
               }}
+        case SET_USER_PREFS:
+            return { ...state, loggedInUser: {...state.loggedInUser, prefs: {...action.userPrefs}} }
+              
         
         default:
             return { ...state }

@@ -50,7 +50,7 @@ export function TodoApp() {
             )
     }
 
-    if (!user) {
+    if (!user || !Object.keys(user).length) {
         return (
             <section className="main-page">
                 <section className="user-info">

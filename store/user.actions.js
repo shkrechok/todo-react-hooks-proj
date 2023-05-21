@@ -1,5 +1,5 @@
 import { userService } from '../services/user.service.js'
-import { store, SET_USER} from './store/store.js'
+import { store, SET_USER, SET_USER_PREFS, SET_TODOS} from './store/store.js'
 
 export function login(credentials) {
     return userService.login(credentials)
@@ -31,10 +31,21 @@ export function logout() {
     // return userService.logout()
         .then(user => {
             store.dispatch({ type: SET_USER, user: null })
-            store.dispatch({ type: 'SET_TODOS', todos: [] })
+            store.dispatch({ type: SET_TODOS, todos: [] })
         })
         .catch(err => {
             console.error('Cannot logout:', err)
+            throw err
+        })
+}
+
+export function updateUserPrefs( updatedUserPrefs, userId){
+    return userService.saveUserPrefs(updatedUserPrefs, userId)
+        .then(userPrefs => {
+            store.dispatch({ type: SET_USER_PREFS, userPrefs })
+        })
+        .catch(err => {
+            console.error('Cannot save user prefs:', err)
             throw err
         })
 }

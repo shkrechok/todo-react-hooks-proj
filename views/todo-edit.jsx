@@ -43,7 +43,7 @@ export function TodoAddEdit() {
         todoActions.saveTodo(todoToEdit).then((savedTodo) => {
             showSuccessMsg('Todo saved')
             navigate('/todo')
-            return savedTodo
+            // return savedTodo
         })
             .catch(err => {
                 showErrorMsg('Cannot save todo')
@@ -52,7 +52,8 @@ export function TodoAddEdit() {
 
     }
 
-    function onEdit() {
+    function onEdit(ev) {
+        ev.preventDefault()
         navigate(`/todo/edit/${todoToEdit._id}?viewType=edit`)
     }
 
@@ -66,7 +67,7 @@ export function TodoAddEdit() {
         
         <section className={`todo-details ${todoToEdit.status}`}>
         <h1>Details</h1>
-        <form onSubmit={onEdit}>
+        <form onSubmit={(ev) => {onEdit(ev)}}>
           <label htmlFor="title">Title</label>
           <p>{todoToEdit.title}</p>
   

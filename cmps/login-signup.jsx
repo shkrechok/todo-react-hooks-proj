@@ -20,7 +20,7 @@ export function LoginSignup({ dispatch }) {
         const updatedCredentials = { ...credentials, [field]: value }
         setCredentials(updatedCredentials)
     }
-
+   //todo: move to actions
     function onSubmit(ev) {
         ev.preventDefault()
         const method = isSignupState ? 'signup' : 'login'

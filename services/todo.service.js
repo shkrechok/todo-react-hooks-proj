@@ -64,7 +64,9 @@ function query(filterBy = {}) {
     // return axios.get(BASE_URL).then(res => res.data)
     return storageService.query(STORAGE_KEY).then(todos => {
         // if (!filterBy) return todos
+        if (filterBy.owner){
         todos = todos.filter(todo => todo.owner._id === filterBy.owner._id)
+        }
         if (filterBy.status !== 'all') {
             todos = todos.filter(todo => todo.status === filterBy.status)
         }

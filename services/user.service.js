@@ -11,7 +11,13 @@ const demoUsers = [
         "password": "secret1",
         "fullname": "First User",
         "balance": 10000,
-        "activities": []
+        "activities": [],
+        "prefs": {
+            "bgColor": "#000000",
+            "fontColor": "#ffffff",
+            "fullname": "First User",
+        }
+
     },
     {
         "_id": "u102",
@@ -19,7 +25,12 @@ const demoUsers = [
         "password": "secret2",
         "fullname": "Second User",
         "balance": 10000,
-        "activities": []
+        "activities": [],
+        "prefs": {
+            "bgColor": "#000000",
+            "fontColor": "#ffffff",
+            "fullname": "Second User",
+        }
     },
     {
         "_id": "u103",
@@ -27,7 +38,12 @@ const demoUsers = [
         "password": "secret3",
         "fullname": "Third User",
         "balance": 10000,
-        "activities": []
+        "activities": [],
+        "prefs": {
+            "bgColor": "#000000",
+            "fontColor": "#ffffff",
+            "fullname": "Third User",
+        }
     }
 ]
 
@@ -37,7 +53,8 @@ export const userService = {
     signup,
     getById,
     getLoggedInUser,
-    getEmptyCredentials
+    getEmptyCredentials,
+    saveUserPrefs
 }
 
 window.us = userService
@@ -76,7 +93,7 @@ function getLoggedInUser() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score }
+    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score, prefs: {...user.prefs} }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
 }
@@ -95,6 +112,18 @@ function _createUsers() {
         utilService.saveToStorage(STORAGE_KEY, demoUsers)
     }
 
+}
+
+function saveUserPrefs(updatedUserPrefs, userId) {
+    return storageService.get(STORAGE_KEY, userId)
+        .then(user => {
+            user.prefs = {...updatedUserPrefs}
+            if(user.prefs.fullname) user.fullname = user.prefs.fullname
+            return storageService.put(STORAGE_KEY, user)
+        })
+        .then(() => {
+            return updatedUserPrefs
+        })
 }
 
 

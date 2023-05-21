@@ -10,6 +10,7 @@ import { TodoApp } from "./views/todo-app.jsx"
 import { TodoAddEdit } from "./views/todo-edit.jsx"
 import { UserMsg } from "./cmps/user-msg.jsx"
 import { AppFooter } from "./cmps/app-footer.jsx"
+import { UserProfile } from "./views/user-profile.jsx"
 
 
 
@@ -26,6 +27,7 @@ export function App() {
                         <Route path="/todo" element={<TodoApp/>}/>
                         <Route path="/todo/edit" element={<TodoAddEdit/>}/>
                         <Route path="/todo/edit/:todoId" element={<TodoAddEdit/>}/>
+                        <Route path="/user-profile" element={<UserProfile/>}/>
                     </Routes>
                     </main>
                     <UserMsg />

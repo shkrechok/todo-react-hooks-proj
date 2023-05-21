@@ -52,7 +52,7 @@ function saveTodo(todo) {
     return todoService.save(todo)
         .then(savedTodo => {
             store.dispatch({ type, todo: savedTodo })
-            return savedTodo
+            // return savedTodo
         }
         )
         .catch(err => {

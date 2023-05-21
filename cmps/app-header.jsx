@@ -11,20 +11,22 @@ export function AppHeader() {
     
     function onLogout() {
         logout()
-        // navigate('/')
+        // todo: add catch
+        navigate('/todo')
     }
     return <header className="main-header full">
         <Link to="/">
             <h3>Let`s Do!</h3>
         </Link>
-        {user && <section className="user-info">
-                <p>{user.fullname} </p>
+        {user && Object.keys(user).length !==0 && <section className="user-info">
+                <p>{user.fullname}</p>
                 <button onClick={onLogout}>Logout</button>
             </section>}
         <nav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/todo">Todo</NavLink>
+          {user && Object.keys(user).length && <NavLink to="/user-profile">User Profile</NavLink>}
         </nav>
     </header>
 }
