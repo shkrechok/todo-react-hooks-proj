@@ -11,13 +11,15 @@ export function UserProfile() {
     const user = useSelector((storeState) => storeState.loggedInUser)
     const defaultStyle = { fullname: 'Guest', bgColor: '#ADD8E6', fontColor: '#00008B' }
     const [currUserPrefs, setCurrUserPrefs] = useState(user.prefs && Object.keys(user.prefs).length !== 0 ? { ...user.prefs } : { ...defaultStyle })
-
+    
+  //todo: fix uploading user prefs on login and default on logout
 
     useEffect(() => {
         console.log('user.prefs', user.prefs)
         console.log('currUserPrefs', currUserPrefs)
         console.log('user', user)
         document.documentElement.style.setProperty('--main-bg-color', currUserPrefs.bgColor)
+        document.documentElement.style.setProperty('--main-color', currUserPrefs.fontColor)
        // setCurrUserPrefs()
     }, [currUserPrefs])
 
@@ -29,7 +31,6 @@ export function UserProfile() {
     }
     
 
-    // todo: change the color vars values css on dom
     function onSetUserPrefs(ev) {
         ev.preventDefault()
         updateUserPrefs(currUserPrefs, user._id).catch(err => {

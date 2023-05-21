@@ -3,14 +3,13 @@ const { useSelector, useDispatch } = ReactRedux
 
 import { func } from 'prop-types'
 import { logout } from '../store/user.actions.js'
-import "../assets/css/setup/variables.css"
+
 
 
 export function AppHeader() {
     const navigate = useNavigate()
     const user = useSelector((storeState) => storeState.loggedInUser)
 
-    //style={{ '--main-bg-color': bgColor }}
     
     function onLogout() {
         logout()
